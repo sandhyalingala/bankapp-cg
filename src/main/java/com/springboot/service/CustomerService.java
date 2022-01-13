@@ -13,6 +13,7 @@ import com.springboot.model.Customer;
 import com.springboot.model.Role;
 import com.springboot.model.UserInfo;
 import com.springboot.repository.CustomerRepository;
+import com.springboot.repository.UserRepository;
 
 
 @Service  
@@ -21,7 +22,8 @@ public class CustomerService {
 	@Autowired
 	private CustomerRepository customerRepository;
 	
-	
+	@Autowired
+	 private UserRepository userRepository;
 	
 	@Autowired 
 	private PasswordEncoder passwordEncoder;
@@ -55,6 +57,15 @@ public class CustomerService {
 	public List<Customer> findAll() {
 		
 		return customerRepository.findAll();
+	}
+	public UserInfo getUserByName(String name) {
+		return userRepository.findByUsername(name);
+		
+		
+	}
+	public Customer getCustomerByName(String name) {
+		
+		return customerRepository.getCustomerByName(name);
 	}
 
 }
